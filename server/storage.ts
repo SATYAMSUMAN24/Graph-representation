@@ -94,7 +94,11 @@ export class MemStorage implements IStorage {
     const chart: Chart = { 
       ...insertChart, 
       id,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
+      xAxisLabel: insertChart.xAxisLabel || null,
+      yAxisLabel: insertChart.yAxisLabel || null,
+      colorTheme: insertChart.colorTheme || null,
+      options: insertChart.options || {}
     };
     this.charts.set(id, chart);
     return chart;

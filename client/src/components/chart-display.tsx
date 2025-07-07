@@ -28,6 +28,9 @@ export function ChartDisplay({ chart }: ChartDisplayProps) {
       script.onload = () => {
         initializeChart();
       };
+      script.onerror = () => {
+        console.error('ChartDisplay: Failed to load ECharts script');
+      };
       document.head.appendChild(script);
     } else {
       initializeChart();
@@ -146,7 +149,7 @@ export function ChartDisplay({ chart }: ChartDisplayProps) {
             </div>
           )}
 
-          <div ref={chartRef} className="h-full w-full p-4" />
+          <div ref={chartRef} className="h-full w-full p-4 min-h-[400px]" />
 
           {/* Chart Stats Panel */}
           <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-4 border border-gray-200">
